@@ -1,0 +1,73 @@
+int[] warp = new int[40];          //tie up thread count
+int[] weft = new int[40];          //pattern pick count
+int[][] pedal = new int[6][2];     //pedal tie up 
+
+void setup() {
+  size(1200, 1200);    //change this to be warp length * 20
+  
+  pedal[0][0] = 1;    //pedal #1
+  pedal[0][1] = 4;    
+  
+  pedal[1][0] = 1;    //pedal #2
+  pedal[1][1] = 2;    
+  
+  pedal[2][0] = 2;    //pedal #3
+  pedal[2][1] = 3;    
+  
+  pedal[3][0] = 3;    //pedal #4
+  pedal[3][1] = 4;    
+  
+  pedal[4][0] = 1;    //pedal #5 & pedal #6 are plain weave pedals
+  pedal[4][1] = 3;
+  pedal[5][0] = 2;
+  pedal[5][1] = 4;
+  
+  for(int v = 0; v < warp.length; v +=1) {
+   warp[v] = round(noise(v) * 6); 
+  }
+  
+  for(int h = 0; h < weft.length; h +=1) {
+   weft[h] = round(noise(h) * 6); 
+  }
+
+  strokeWeight(width/(warp.length * 2));
+  strokeCap(PROJECT);
+  noLoop();
+  
+  println("--------------------------------------------");
+  println("warp tie up (repeat):");
+  printArray(warp);
+  println("---------------------------------------------");
+  println("weft pattern pedal order:");
+  printArray(weft);
+  println("---------------------------------------------");
+  println("pedal tie up:");
+  println("pedal #1:", pedal[0][0], pedal[0][1]);
+  println("pedal #2:", pedal[1][0], pedal[1][1]);
+  println("pedal #3:", pedal[2][0], pedal[2][1]);
+  println("pedal #4:", pedal[3][0], pedal[3][1]);
+}
+
+void draw() {
+ background(0); 
+ stroke(255);
+ 
+ int a = 0;
+ int b = 0;
+ for(int y = 0; y < height; y += (height/(warp.length * 2))) {
+   for(int x = 0; x < width; x += (width/(warp.length * 2))) {
+     if(warp[b] == pedal[(weft[a] - 1)][0] || warp[b] == pedal[(weft[a] - 1)][1]) {
+      point(x, y);
+     }
+     b += 1;
+     if(b > (warp.length - 1)) {
+      b = 0; 
+     }
+   }
+   a += 1;
+   if(a > (weft.length - 1)) {
+    a = 0; 
+   }
+ }
+ save("Perlin Noise Generated Pattern #1.png");
+}

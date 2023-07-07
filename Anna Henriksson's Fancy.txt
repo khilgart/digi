@@ -1,0 +1,100 @@
+int[] warp = new int[40];          //tie up thread count
+int[] weft = new int[35];          //pattern pick count
+int[][] pedal = new int[6][2];     //pedal tie up 
+
+void setup() {
+  size(1200, 1200);    //change this to be warp length * 30
+  
+  pedal[0][0] = 1;    //pedal #1
+  pedal[0][1] = 4;    
+  
+  pedal[1][0] = 1;    //pedal #2
+  pedal[1][1] = 2;    
+  
+  pedal[2][0] = 2;    //pedal #3
+  pedal[2][1] = 3;    
+  
+  pedal[3][0] = 3;    //pedal #4
+  pedal[3][1] = 4;    
+  
+  pedal[4][0] = 1;    //pedal #5 & pedal #6 are plain weave pedals
+  pedal[4][1] = 3;
+  pedal[5][0] = 2;
+  pedal[5][1] = 4;
+  
+  warp[0] = 1;        //warp tie up order
+  warp[1] = 2;
+  warp[2] = 3;
+  warp[3] = 4;
+  warp[4] = 4;
+  warp[5] = 3;
+  warp[6] = 4;
+  warp[7] = 4;
+  warp[8] = 3;
+  warp[9] = 2;
+  warp[10] = 1;
+  warp[11] = 1;
+  warp[12] = 2;
+  warp[13] = 1;
+  warp[14] = 1;
+  warp[15] = 2;
+  warp[16] = 3;
+  warp[17] = 4;
+  warp[18] = 4;
+  warp[19] = 3;
+  warp[20] = 4;
+  warp[21] = 4;
+  warp[22] = 3;
+  warp[23] = 2;
+  warp[24] = 1;
+  warp[25] = 4;
+  warp[26] = 3;
+  warp[27] = 2;
+  warp[28] = 1;
+  warp[29] = 4;
+  warp[30] = 3;
+  warp[31] = 2;
+  warp[32] = 1;
+  warp[33] = 2;
+  warp[34] = 3;
+  warp[35] = 4;
+  warp[36] = 1;
+  warp[37] = 2;
+  warp[38] = 3;
+  warp[39] = 4;
+  
+  weft[0] = 3;        //weft pedal pressing order
+  weft[1] = 2;
+  weft[2] = 1;
+  weft[3] = 4;
+  weft[4] = 3;
+  weft[5] = 2;
+  weft[6] = 1;
+  weft[7] = 4;
+  weft[8] = 3;
+  weft[9] = 2;
+  weft[10] = 1;
+  weft[11] = 2;
+  weft[12] = 3;
+  weft[13] = 4;
+  weft[14] = 1;
+  weft[15] = 2;
+  weft[16] = 3;
+  weft[17] = 4;
+  weft[18] = 1;
+  weft[19] = 2;
+  weft[20] = 3;
+  weft[21] = 4;
+  weft[22] = 4;
+  weft[23] = 4;
+  weft[24] = 4;
+  weft[25] = 3;
+  weft[26] = 2;
+  weft[27] = 2;
+  weft[28] = 2;
+  weft[29] = 2;
+  weft[30] = 3;
+  weft[31] = 4;
+  weft[32] = 4;
+  weft[33] = 4;
+  weft[34] = 4;
